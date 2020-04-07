@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'data.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -9,46 +8,64 @@ void main() {
   ));
 }
 
+
+
 class MyApp extends StatelessWidget {
-  
+  var container_main = Container(
+                    decoration: BoxDecoration(shape: BoxShape.circle,gradient: LinearGradient(colors: [Colors.red,Colors.amber])),
+                    height: 60,
+                    width: 60,
+                  );
+  var litems = ['yo', 'my', 'ass'];
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-
     return Scaffold(
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            FloatingActionButton(onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SecondRoute()));
-            }),
-            Padding(
-              padding: const EdgeInsets.only(left: 30),
-              child: FloatingActionButton(onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SecondRoute()));
-              }),
-            ),
-            FloatingActionButton(onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SecondRoute()));
-            }),
-          ],
-        ),
         appBar: AppBar(
-          title: Text('First Route'),
+          title: Text('Home'),
+        ),
+        bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondRoute()),
+                    );
+                  },
+                  child:container_main ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondRoute()),
+                    );
+                  },
+                  child: container_main),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondRoute()),
+                    );
+                  },
+                  child: container_main),
+            )
+          ],
         ),
         body: new ListView.builder(
             itemCount: litems.length,
             itemBuilder: (BuildContext ctxt, int Index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: new Text(
-                  litems[Index],
-                  style: TextStyle(fontSize: 30),
-                ),
-              );
+              return new Text(litems[Index]);
             })
         // body: Center(
         //   child: RaisedButton(
@@ -67,7 +84,7 @@ class MyApp extends StatelessWidget {
 
 class SecondRoute extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Route"),
