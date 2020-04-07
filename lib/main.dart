@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
 
 class SecondRoute extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Route"),
